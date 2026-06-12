@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter Suite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 350px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input, select, button {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Unit Converter Suite</h2>
+
+    <input type="number" id="value" placeholder="Enter Value">
+
+    <select id="conversion">
+        <option value="m-km">Meter to Kilometer</option>
+        <option value="km-m">Kilometer to Meter</option>
+        <option value="g-kg">Gram to Kilogram</option>
+        <option value="kg-g">Kilogram to Gram</option>
+        <option value="c-f">Celsius to Fahrenheit</option>
+        <option value="f-c">Fahrenheit to Celsius</option>
+    </select>
+
+    <button onclick="convert()">Convert</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+function convert() {
+    let value = parseFloat(document.getElementById("value").value);
+    let type = document.getElementById("conversion").value;
+    let result;
+
+    switch(type) {
+        case "m-km":
+            result = value / 1000;
+            break;
+
+        case "km-m":
+            result = value * 1000;
+            break;
+
+        case "g-kg":
+            result = value / 1000;
+            break;
+
+        case "kg-g":
+            result = value * 1000;
+            break;
+
+        case "c-f":
+            result = (value * 9/5) + 32;
+            break;
+
+        case "f-c":
+            result = (value - 32) * 5/9;
+            break;
+    }
+
+    document.getElementById("result").innerHTML =
+        "Result: " + result.toFixed(2);
+}
+</script>
+
+</body>
+</html>
